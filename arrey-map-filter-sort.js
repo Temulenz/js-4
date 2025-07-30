@@ -56,10 +56,34 @@ students.sort((student2, student1) => {
 console.log(students);
 
 let Students = [
-  { name: "Bataa", age: 18, grade: 54, gender: "male", balance: 114 },
-  { name: "Khangai", age: 132, grade: 54, gender: "male", balance: 333 },
-  { name: "Sumbee", age: 165, grade: 84, gender: "male", balance: 123 },
-  { name: "Ganbaa", age: 17, grade: 98, gender: "male", balance: 234 },
+  {
+    name: "Bataa",
+    age: 18,
+    grade: 54,
+    gender: "male",
+    balance: 114,
+  },
+  {
+    name: "Khangai",
+    age: 132,
+    grade: 54,
+    gender: "male",
+    balance: 333,
+  },
+  {
+    name: "Sumbee",
+    age: 165,
+    grade: 84,
+    gender: "female",
+    balance: 123,
+  },
+  {
+    name: "Ganbaa",
+    age: 17,
+    grade: 98,
+    gender: "female",
+    balance: 234,
+  },
 ];
 
 // Bodlogo #1
@@ -104,12 +128,37 @@ console.log("======================B3", resultAge);
 // neg too ogonguut tuhain toonoos ih balanactei surgchdiig yalgaj ogoh function bich
 const filterByBalance = (student, balance) => {
   let filtered = student.filter((student) => {
-    return student.balance == balance;
+    return student.balance > balance;
   });
+  return filtered;
 };
+let resultBalance = filterByBalance(Students, 114);
+console.log(resultBalance);
 
 // bodlogo #5
 // classCode gesen field nemeh function bich
 // eg: addClassCodeToStudents(students,"3A") => [{name: "boldo",age: 3,grade: 11,gender: "male",balance: 1231,classCode:"3A"},...]
+const addclasscode = (students, classcode) => {
+  let mapped = students.map((student) => {
+    return { name: student.name, age: student.age, classcode: "3a" };
+  });
+  return mapped;
+};
+let resultadd = addclasscode(Students);
+console.log(resultadd);
 // bodlogo #6
 // removeGenders from student array function bich
+
+const removeGenders = (student) => {
+  let mapped = student.map((student) => {
+    return {
+      name: student.name,
+      age: student.age,
+      grade: student.grade,
+      balance: student.balance,
+    };
+  });
+  return mapped;
+};
+let resultRemoveGender = removeGenders(Students);
+console.log(resultRemoveGender);
