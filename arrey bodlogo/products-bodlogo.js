@@ -192,14 +192,24 @@ let resultgetTotalPrice = getTotalPrice(data);
 console.log("12", resultgetTotalPrice);
 
 // 13. Тухайн supplier-аар шүүж бүтээгдэхүүнүүдийг буцаадаг функц бич.
-function filterBySupplier(products, supplierName) {
-  // ...
+function filterBySupplier(products, supplier) {
+  let filtered = products.filter((product) => {
+    return product.supplier.toLowerCase() == supplier.toLowerCase();
+  });
+  return filtered;
 }
+let resultfilterBySupplier = filterBySupplier(data, "mobicom");
+console.log("13", resultfilterBySupplier);
 
 // 14. Бүх бүтээгдэхүүний нэрсийг массив болгон буцаадаг функц бич.
 function getProductNames(products) {
-  // ...
+  let mapped = products.map((product) => {
+    return { getProduct: product.name };
+  });
+  return mapped;
 }
+let resultgetProductNames = getProductNames(data);
+console.log(resultgetProductNames);
 
 // 15. Бүтээгдэхүүнүүдийг үнээр нь өсөхөөр эрэмбэлж буцаадаг функц бич.
 function sortByPriceAscending(products) {
@@ -213,25 +223,68 @@ console.log("15", resultsortByPriceAscending);
 
 // 16. Нөөц багатай (≤ 5) бүтээгдэхүүнүүдийг шүүж буцаадаг функц бич.
 function getLowStockProducts(products) {
-  // ...
+  let filtered = products.filter((product) => {
+    return product.stock <= 5;
+  });
+  return filtered;
 }
+let resultgetLowStockProducts = getLowStockProducts(data);
+console.log("16", resultgetLowStockProducts);
 
 // 17. Давхардалгүй нийлүүлэгчийн нэрсийн массив буцаадаг функц бич.
 function getUniqueSuppliers(products) {
-  // ...
+  let arrSupliers = products.map((product) => {
+    return product.supplier;
+  });
+  let uniqueSuppliers = [];
+  arrSupliers.forEach((supplier) => {
+    if (uniqueSuppliers.includes(supplier)) {
+    } else {
+      uniqueSuppliers.push(supplier);
+    }
+  });
+
+  return uniqueSuppliers;
 }
+let resultgetUniqueSuppliers = getUniqueSuppliers(data);
+console.log("17", resultgetUniqueSuppliers);
 
 // 18. Зөвхөн name ба price талбартай шинэ массив үүсгэдэг функц бич.
 function getNameAndPriceList(products) {
-  // ...
+  let mapped = products.map((product) => {
+    return { name: product.name, price: product.price };
+  });
+  return mapped;
 }
+let resultgetNameAndPriceList = getNameAndPriceList(data);
+console.log("18", resultgetNameAndPriceList);
 
 // 19. Үнэлгээ нь 4.5-аас их бүх бүтээгдэхүүнүүдийг буцаадаг функц бич.
 function getHighlyRatedProducts(products) {
-  // ...
+  let filtered = products.filter((product) => {
+    return product.rating > 4.5;
+  });
+  return filtered;
 }
-
+let resultgetHighlyRatedProducts = getHighlyRatedProducts(data);
+console.log("19", resultgetHighlyRatedProducts);
 // 20. Бүх бүтээгдэхүүнд `id` талбар нэмж өгдөг функц бич (жишээ нь 1, 2, 3...).
 function addIdToProducts(products) {
-  // ...
+  let mapped = products.map((product, id) => {
+    id++;
+    return {
+      id,
+      name: product.name,
+      category: product.category,
+      price: product.category,
+      stock: product.stock,
+      brand: product.brand,
+      rating: product.rating,
+      supplier: product.supplier,
+      weight: product.weight,
+    };
+  });
+  return mapped;
 }
+let resultaddIdToProducts = addIdToProducts(data);
+console.log(resultaddIdToProducts);
