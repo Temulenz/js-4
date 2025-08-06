@@ -12,4 +12,4 @@ body.appendChild(h2);
 body.appendChild(h3);
 body.appendChild(h4);
 
-img.className;
+img.src = "zurag1.jpegs";
